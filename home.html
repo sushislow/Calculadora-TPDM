@@ -8,31 +8,36 @@
 </head>
 <body>
     <div class="calculator">
-        <form id="calculator-form">
-            <input type="text" id="display" disabled>
-            <div class="buttons">
-                <button type="button" onclick="clearDisplay()">C</button>
-                <button type="button" onclick="removeLast()">←</button>
-                <button type="button" onclick="appendOperator('**')">x^</button>
-                <button type="button" onclick="appendOperator('/')">/</button>
-                <button type="button" onclick="appendNumber('7')">7</button>
-                <button type="button" onclick="appendNumber('8')">8</button>
-                <button type="button" onclick="appendNumber('9')">9</button>
-                <button type="button" onclick="appendOperator('*')">x</button>
-                <button type="button" onclick="appendNumber('4')">4</button>
-                <button type="button" onclick="appendNumber('5')">5</button>
-                <button type="button" onclick="appendNumber('6')">6</button>
-                <button type="button" onclick="appendOperator('-')">-</button>
-                <button type="button" onclick="appendNumber('1')">1</button>
-                <button type="button" onclick="appendNumber('2')">2</button>
-                <button type="button" onclick="appendNumber('3')">3</button>
-                <button type="button" onclick="appendOperator('+')">+</button>
-                <button type="button" onclick="appendDecimal()">.</button>
-                <button type="button" onclick="appendNumber('0')">0</button>
-                <button type="button" onclick="calculate()">=</button>
-                <button type="button" onclick="calculateSqrt()">√</button>
-            </div>
-        </form>
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button class="operator" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="removeLast()">←</button>
+            <button class="operator" onclick="appendOperator('**')">x²</button>
+            <button class="operator" onclick="appendOperator('/')">/</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="appendOperator('*')">x</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button class="operator" onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button class="operator" onclick="appendOperator('+')">+</button>
+            <button class="zero" onclick="appendNumber('0')">0</button>
+            <button class="decimal" onclick="appendNumber('.')">.</button>
+            <button class="operator" onclick="setRootMode()">√</button>
+            <select class="root-select" id="root-select" onchange="setRootMode(this.value)">
+                <option value="2">√x</option>
+                <option value="3">∛x</option>
+                <option value="4">∜x</option>
+                <option value="5">5√x</option>
+                <option value="10">10√x</option>
+            </select>
+            <button class="operator" onclick="calculate()">=</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

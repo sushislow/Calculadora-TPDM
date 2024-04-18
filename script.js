@@ -11,11 +11,13 @@ function removeLast() {
 }
 
 function appendNumber(num) {
+    if (expression === '' && num === '0') return;
     expression += num;
     updateDisplay();
 }
 
 function appendOperator(operator) {
+    if (expression === '') return;
     expression += operator;
     updateDisplay();
 }
@@ -27,19 +29,21 @@ function appendDecimal() {
     }
 }
 
-function calculate() {
-    try {
-        const result = eval(expression);
-        document.getElementById('display').value = result;
-        expression = result.toString();
-    } catch (error) {
-        document.getElementById('display').value = 'Error';
+function setRootMode(index) {
+    if (expression === '') return;
+    if (index === undefined) {
+        index = document.getElementById('root-select').value;
     }
+    expression = 'Math.pow(' + expression + ', 1/' + index + ')';
+    updateDisplay();
 }
 
-function calculateSqrt() {
+function calculate() {
     try {
-        const result = Math.sqrt(eval(expression));
+        let result = eval(expression);
+        if (isNaN(result)) {
+            throw new Error();
+        }
         document.getElementById('display').value = result;
         expression = result.toString();
     } catch (error) {
