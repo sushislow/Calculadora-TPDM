@@ -1,35 +1,35 @@
 let expression = '';
 
-function clearDisplay() {
+const clearDisplay = () => {
     expression = '';
     updateDisplay();
 }
 
-function removeLast() {
+const removeLast = () => {
     expression = expression.slice(0, -1);
     updateDisplay();
 }
 
-function appendNumber(num) {
+const appendNumber = (num) => {
     if (expression === '' && num === '0') return;
     expression += num;
     updateDisplay();
 }
 
-function appendOperator(operator) {
+const appendOperator = (operator) => {
     if (expression === '') return;
     expression += operator;
     updateDisplay();
 }
 
-function appendDecimal() {
+const appendDecimal = () => {
     if (!expression.includes('.')) {
         expression += '.';
         updateDisplay();
     }
 }
 
-function setRootMode(index) {
+const setRootMode = (index) =>{
     if (expression === '') return;
     if (index === undefined) {
         index = document.getElementById('root-select').value;
@@ -38,7 +38,7 @@ function setRootMode(index) {
     updateDisplay();
 }
 
-function calculate() {
+const calculate = () => {
     try {
         let result = eval(expression);
         if (isNaN(result)) {
@@ -51,6 +51,6 @@ function calculate() {
     }
 }
 
-function updateDisplay() {
+const updateDisplay = () => {
     document.getElementById('display').value = expression;
 }
